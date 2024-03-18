@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import { Door } from '@/models/Door';
-import { DetailPageContainer } from '@/ui/layout/DetailPageContainer';
-import { DetailPageItem } from '@/ui/layout/DetailPageItem';
 import { ConnectionStatus } from '@/models/ConnectionStatus';
+import { DetailPageItem } from '@/ui/layout/DetailPageItem';
+import { DetailPageContainer } from '@/ui/layout/DetailPageContainer';
 
 interface DoorDetailProps {
   door: Door;

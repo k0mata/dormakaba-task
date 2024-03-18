@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { Door } from '@/models/Door';
+import { ConnectionStatus } from '@/models/ConnectionStatus';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
-import { ConnectionStatus } from '@/models/ConnectionStatus';
 
 interface DoorListProps {
   doors: Door[];
