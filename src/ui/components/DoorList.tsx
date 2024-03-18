@@ -29,7 +29,6 @@ const columns: GridColDef<Door>[] = [
     field: 'connectionStatus',
     headerName: 'Connection status',
     flex: 1,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     renderCell: ({ row: door }) => {
       return (
         <Typography
