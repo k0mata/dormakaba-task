@@ -1,8 +1,11 @@
-import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import { useRouter } from 'next/router';
+
 import { Door } from '@/models/Door';
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
+import { DateTime } from '@/lib/dateTime';
+
 import Typography from '@mui/material/Typography';
+import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 
 interface DoorListProps {
   doors: Door[];
@@ -12,17 +15,17 @@ const columns: GridColDef<Door>[] = [
   {
     field: 'name',
     headerName: 'Name',
-    flex: 1,
+    flex: 1
   },
   {
     field: 'buildingName',
     headerName: 'Building',
-    flex: 1,
+    flex: 1
   },
   {
     field: 'connectionType',
     headerName: 'Connection type',
-    flex: 1,
+    flex: 1
   },
   {
     field: 'connectionStatus',
@@ -31,8 +34,18 @@ const columns: GridColDef<Door>[] = [
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     renderCell: ({ row: door }) => {
       return <Typography color="success.main">online</Typography>;
-    },
+    }
   },
+  {
+    field: 'lastConnectionStatusUpdate',
+    headerName: 'Last connection status update',
+    flex: 1,
+    renderCell: ({ row: door }) => {
+      return <Typography color="common.black">
+        {DateTime.fromISO(door.lastConnectionStatusUpdate).toLocaleString(DateTime.DATETIME_MED)}
+      </Typography>;
+    }
+  }
 ];
 
 export function DoorList({ doors }: DoorListProps) {
@@ -42,10 +55,10 @@ export function DoorList({ doors }: DoorListProps) {
     (gridRow: GridRowParams<Door>) => {
       router.push({
         pathname: '/doors/[doorId]',
-        query: { doorId: gridRow.id },
+        query: { doorId: gridRow.id }
       });
     },
-    [router],
+    [router]
   );
 
   return (
