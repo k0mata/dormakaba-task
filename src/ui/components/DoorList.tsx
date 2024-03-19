@@ -41,9 +41,11 @@ const columns: GridColDef<Door>[] = [
     headerName: 'Last connection status update',
     flex: 1,
     renderCell: ({ row: door }) => {
-      return <Typography color="common.black">
-        {DateTime.fromISO(door.lastConnectionStatusUpdate).toLocaleString(DateTime.DATETIME_MED)}
-      </Typography>;
+      return (
+        <Typography>
+          {DateTime.fromISO(door.lastConnectionStatusUpdate).toLocaleString(DateTime.DATETIME_MED)}
+        </Typography>
+      );
     }
   }
 ];
