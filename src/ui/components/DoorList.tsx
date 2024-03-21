@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { Door } from '@/models/Door';
+import { ConnectionStatus } from '@/models/ConnectionStatus';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
 
@@ -33,9 +34,14 @@ const columns: GridColDef<Door>[] = [
     field: 'connectionStatus',
     headerName: 'Connection status',
     flex: 1,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     renderCell: ({ row: door }) => {
-      return <Typography color="success.main">online</Typography>;
+      return (
+        <Typography
+          color={door.connectionStatus === ConnectionStatus.Online ? 'success.main' : 'error.main'}
+        >
+          {door.connectionStatus}
+        </Typography>
+      );
     }
   }
 ];
