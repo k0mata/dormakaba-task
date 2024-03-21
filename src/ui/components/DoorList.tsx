@@ -5,7 +5,6 @@ import { DateTime } from '@/lib/dateTime';
 import { ConnectionStatus } from '@/models/ConnectionStatus';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 
 interface DoorListProps {
   doors: Door[];
@@ -37,7 +36,7 @@ const columns: GridColDef<Door>[] = [
     headerName: 'Connection status',
     flex: 1,
     renderCell: ({ row: door }) => {
-    return (
+      return (
         <Typography
           color={door.connectionStatus === ConnectionStatus.Online ? 'success.main' : 'error.main'}
         >
