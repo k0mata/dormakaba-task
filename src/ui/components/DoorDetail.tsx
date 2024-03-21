@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 import { Door } from '@/models/Door';
 import { ConnectionStatus } from '@/models/ConnectionStatus';
 import { DetailPageItem } from '@/ui/layout/DetailPageItem';
+import { DateTime } from '@/lib/dateTime';
 import { DetailPageContainer } from '@/ui/layout/DetailPageContainer';
 
 interface DoorDetailProps {
@@ -28,6 +29,11 @@ export function DoorDetail({ door }: DoorDetailProps) {
           color={door.connectionStatus === ConnectionStatus.Online ? 'success.main' : 'error.main'}
         >
           {door.connectionStatus}
+        </Typography>
+      </DetailPageItem>
+      <DetailPageItem label="Last connection status update">
+        <Typography>
+          {DateTime.fromISO(door.lastConnectionStatusUpdate).toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)}
         </Typography>
       </DetailPageItem>
     </DetailPageContainer>

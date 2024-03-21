@@ -1,9 +1,11 @@
-import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { Door } from '@/models/Door';
+import { DateTime } from '@/lib/dateTime';
 import { ConnectionStatus } from '@/models/ConnectionStatus';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
+import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 
 interface DoorListProps {
   doors: Door[];
@@ -35,11 +37,23 @@ const columns: GridColDef<Door>[] = [
     headerName: 'Connection status',
     flex: 1,
     renderCell: ({ row: door }) => {
-      return (
+    return (
         <Typography
           color={door.connectionStatus === ConnectionStatus.Online ? 'success.main' : 'error.main'}
         >
           {door.connectionStatus}
+        </Typography>
+      );
+    }
+  },
+  {
+    field: 'lastConnectionStatusUpdate',
+    headerName: 'Last connection status update',
+    flex: 1,
+    renderCell: ({ row: door }) => {
+      return (
+        <Typography>
+          {DateTime.fromISO(door.lastConnectionStatusUpdate).toLocaleString(DateTime.DATETIME_MED)}
         </Typography>
       );
     }
