@@ -10,9 +10,9 @@ export default function DoorListPage() {
     <>
       <Head>
         <title>Door list</title>
-        <meta name="description" content="door list" />
+        <meta name="description" content="door list"/>
       </Head>
-      <Layout title="Doors">{isSuccess && <DoorList doors={doors} />}</Layout>
+      <Layout title="Doors">{isSuccess && <DoorList doors={doors}/>}</Layout>
     </>
   );
 }
