@@ -12,17 +12,22 @@ const columns: GridColDef<Door>[] = [
   {
     field: 'name',
     headerName: 'Name',
-    flex: 1,
+    flex: 1
   },
   {
     field: 'buildingName',
     headerName: 'Building',
-    flex: 1,
+    flex: 1
+  },
+  {
+    field: 'apartmentName',
+    headerName: 'Apartment',
+    flex: 1
   },
   {
     field: 'connectionType',
     headerName: 'Connection type',
-    flex: 1,
+    flex: 1
   },
   {
     field: 'connectionStatus',
@@ -31,8 +36,8 @@ const columns: GridColDef<Door>[] = [
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     renderCell: ({ row: door }) => {
       return <Typography color="success.main">online</Typography>;
-    },
-  },
+    }
+  }
 ];
 
 export function DoorList({ doors }: DoorListProps) {
@@ -42,10 +47,10 @@ export function DoorList({ doors }: DoorListProps) {
     (gridRow: GridRowParams<Door>) => {
       router.push({
         pathname: '/doors/[doorId]',
-        query: { doorId: gridRow.id },
+        query: { doorId: gridRow.id }
       });
     },
-    [router],
+    [router]
   );
 
   return (
