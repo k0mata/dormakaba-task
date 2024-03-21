@@ -10,7 +10,7 @@ type ApartmentDtosById = Record<string, ApartmentDto>;
 
 @injectable()
 export class DoorMapper implements EntityMapper<Door, DoorDto> {
-  public toDomain(doorDto: DoorDto, buildingDtosById: BuildingDtosById, apartmentDtos: ApartmentDtosById): Door {
+  public toDomain(doorDto: DoorDto, buildingDtosById: BuildingDtosById, apartmentDtos?: ApartmentDtosById): Door {
     const buildingName = this.getBuildingName(
       buildingDtosById,
       doorDto.building_id
@@ -38,8 +38,8 @@ export class DoorMapper implements EntityMapper<Door, DoorDto> {
     return building ? `${building.street} ${building.street_no}` : 'n/a';
   }
 
-  private getApartmentName(apartmentDtos: ApartmentDtosById, id?: string) {
-    if (!id) {
+  private getApartmentName(apartmentDtos?: ApartmentDtosById, id?: string) {
+    if (!apartmentDtos || !id) {
       return 'n/a';
     }
 
